@@ -60,13 +60,13 @@ public class MazeAnalyzerTest {
     public void analyzeTest(){
         MazeAnalyzer analyzer = new MazeAnalyzer(this.maze);
         List<Vector2D> correct = new ArrayList<>();
-        correct.add(new Vector2D(0,0));
-        correct.add(new Vector2D(1,0));
         correct.add(new Vector2D(1,1));
-        correct.add(new Vector2D(2,0));
-        correct.add(new Vector2D(3,0));
-        correct.add(new Vector2D(-1,0));
-        correct.add(new Vector2D(-1,-1));
+        correct.add(new Vector2D(2,1));
+        correct.add(new Vector2D(2,2));
+        correct.add(new Vector2D(3,1));
+        correct.add(new Vector2D(4,1));
+        correct.add(new Vector2D(0,1));
+        correct.add(new Vector2D(0,0));
 
         Assert.assertEquals(correct, analyzer.getPositionList());
 

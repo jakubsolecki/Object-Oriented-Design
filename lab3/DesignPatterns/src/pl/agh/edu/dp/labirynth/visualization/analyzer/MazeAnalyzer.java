@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MazeAnalyzer {
     private final Maze maze;
@@ -62,8 +63,17 @@ public class MazeAnalyzer {
         }
     }
 
+    private List<Vector2D> mapToLeftDown(List<Vector2D> list){
+        Vector2D downLeft = new Vector2D(Integer.MAX_VALUE, Integer.MAX_VALUE);
+
+        list.forEach(vector2D -> downLeft.setXY(vector2D.getSmallest(downLeft)));
+        list = list.stream().map(vector2D -> vector2D.diff(downLeft)).collect(Collectors.toList());
+
+        return list;
+    }
+
     public List<Vector2D> getPositionList() {
         BFS();
-        return new ArrayList<>(Arrays.asList(this.positionTable));
+        return mapToLeftDown(new ArrayList<>(Arrays.asList(this.positionTable)));
     }
 }

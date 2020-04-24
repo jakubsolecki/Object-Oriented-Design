@@ -1,8 +1,8 @@
 package pl.agh.edu.dp.labirynth.visualization.analyzer;
 
 public class Vector2D {
-    private final int X;
-    private final int Y;
+    private int X;
+    private int Y;
 
     public Vector2D(int x, int y) {
         X = x;
@@ -31,4 +31,29 @@ public class Vector2D {
                 Y == vector2D.Y;
     }
 
+    public Vector2D getSmallest(Vector2D other){
+        int x;
+        int y;
+
+        x = Math.min(this.getX(), other.getX());
+        y = Math.min(this.getY(), other.getY());
+        return new Vector2D(x, y);
+    }
+
+    public void setX(int x) {
+        X = x;
+    }
+
+    public void setY(int y) {
+        Y = y;
+    }
+
+    public void setXY(Vector2D v){
+        Y = v.Y;
+        X = v.X;
+    }
+
+    public Vector2D diff(Vector2D other){
+        return new Vector2D(this.X - other.X, this.Y - other.Y);
+    }
 }
