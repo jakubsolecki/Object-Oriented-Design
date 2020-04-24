@@ -1,10 +1,13 @@
 package pl.agh.edu.dp.labirynth.visualization;
 
+import pl.agh.edu.dp.labirynth.Maze;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel{
     private final Router router;
+
 
     public GamePanel(Router router){
         super();

@@ -4,10 +4,9 @@ import pl.agh.edu.dp.labirynth.Direction;
 import pl.agh.edu.dp.labirynth.Maze;
 import pl.agh.edu.dp.labirynth.Room;
 import pl.agh.edu.dp.labirynth.abstractFactory.MazeFactory;
-import pl.agh.edu.dp.labirynth.builder.CountingMazeBuilder;
 import pl.agh.edu.dp.labirynth.builder.StandardMazeBuilder;
-import pl.agh.edu.dp.labirynth.visualization.MazeAnalyzer;
-import pl.agh.edu.dp.labirynth.visualization.Vector2D;
+import pl.agh.edu.dp.labirynth.visualization.analyzer.MazeAnalyzer;
+import pl.agh.edu.dp.labirynth.visualization.analyzer.Vector2D;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +22,15 @@ public class MazeAnalyzerTest {
         Room r3 = factory.createRoom(2);
         Room r4 = factory.createRoom(3);
         Room r5 = factory.createRoom(4);
+        Room r6 = factory.createRoom(5);
+        Room r7 = factory.createRoom(6);
         builder.addRoom(r1);
         builder.addRoom(r2);
         builder.addRoom(r3);
         builder.addRoom(r4);
         builder.addRoom(r5);
+        builder.addRoom(r6);
+        builder.addRoom(r7);
 
         builder.createWallBetween(r1, r2,  Direction.East);
         builder.addDoor(factory.createDoor(r1, r2));
@@ -38,12 +41,20 @@ public class MazeAnalyzerTest {
         builder.createWallBetween(r4, r5,  Direction.East);
         builder.addDoor(factory.createDoor(r4, r5));
 
+        builder.createWallBetween(r1, r6,  Direction.West);
+        builder.addDoor(factory.createDoor(r1, r6));
+
+        builder.createWallBetween(r6, r7,  Direction.South);
+        builder.addDoor(factory.createDoor(r6, r7));
+
 
         this.maze = builder.getCurrentMaze();
     }
     //map:
-    // #
-    //####
+    //  #
+    //#F###
+    //#
+    // F -> first room
 
     @Test
     public void analyzeTest(){
@@ -52,8 +63,10 @@ public class MazeAnalyzerTest {
         correct.add(new Vector2D(0,0));
         correct.add(new Vector2D(1,0));
         correct.add(new Vector2D(1,1));
-        correct.add(new Vector2D(2,1));
-        correct.add(new Vector2D(3,1));
+        correct.add(new Vector2D(2,0));
+        correct.add(new Vector2D(3,0));
+        correct.add(new Vector2D(-1,0));
+        correct.add(new Vector2D(-1,-1));
 
         Assert.assertEquals(correct, analyzer.getPositionList());
 

@@ -1,6 +1,6 @@
 package pl.agh.edu.dp.labirynth;
 
-import pl.agh.edu.dp.labirynth.visualization.Vector2D;
+import pl.agh.edu.dp.labirynth.visualization.analyzer.Vector2D;
 
 public enum Direction {
     North, South, East, West;

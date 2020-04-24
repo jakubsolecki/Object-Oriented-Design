@@ -1,4 +1,4 @@
-package pl.agh.edu.dp.labirynth.visualization;
+package pl.agh.edu.dp.labirynth.visualization.analyzer;
 
 import pl.agh.edu.dp.labirynth.Direction;
 import pl.agh.edu.dp.labirynth.Door;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MazeAnalyzer {
     private final Maze maze;
-    private final Vector2D []positionTable;
+    private final Vector2D[]positionTable;
 
     public MazeAnalyzer(Maze maze) {
         this.maze = maze;
@@ -25,6 +25,7 @@ public class MazeAnalyzer {
         LinkedList<Vector2D> vQueue = new LinkedList<Vector2D>();
         int currentX = 0;
         int currentY = 0;
+        vQueue.add(new Vector2D(currentX, currentY));
 
         Room currentRoom = maze.getFirstRoom();
         this.positionTable[currentRoom.getRoomNumber()] = new Vector2D(currentX, currentY);
@@ -34,12 +35,11 @@ public class MazeAnalyzer {
         queue.add(currentRoom);
         while (queue.size() != 0){
             currentRoom = queue.poll();
-            if (!vQueue.isEmpty()){
-                Vector2D vector2D = vQueue.poll();
-                currentX += vector2D.getX();
-                currentY += vector2D.getY();
-                this.positionTable[currentRoom.getRoomNumber()] = new Vector2D(currentX, currentY);
-            }
+            Vector2D vector2D = vQueue.poll();
+            currentX = vector2D.getX();
+            currentY = vector2D.getY();
+            this.positionTable[currentRoom.getRoomNumber()] = new Vector2D(currentX, currentY);
+
 
             for (Direction dir : Direction.values()){
                 if (currentRoom.getSide(dir) instanceof Door){
@@ -47,13 +47,15 @@ public class MazeAnalyzer {
                     if (door.getRoom2() == currentRoom && !visited[door.getRoom1().getRoomNumber()]){
                         visited[currentRoom.getRoomNumber()] = true;
                         queue.add(door.getRoom1());
-                        vQueue.add(dir.toVector());
+                        Vector2D dirVector = dir.toVector();
+                        vQueue.add(new Vector2D(currentX + dirVector.getX(), currentY + dirVector.getY()));
                         continue;
                     }
                     if (door.getRoom1() == currentRoom && !visited[door.getRoom2().getRoomNumber()]){
                         visited[currentRoom.getRoomNumber()] = true;
                         queue.add(door.getRoom2());
-                        vQueue.add(dir.toVector());
+                        Vector2D dirVector = dir.toVector();
+                        vQueue.add(new Vector2D(currentX + dirVector.getX(), currentY + dirVector.getY()));
                     }
                 }
             }

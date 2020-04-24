@@ -1,4 +1,4 @@
-package pl.agh.edu.dp.labirynth.visualization;
+package pl.agh.edu.dp.labirynth.visualization.analyzer;
 
 public class Vector2D {
     private final int X;
