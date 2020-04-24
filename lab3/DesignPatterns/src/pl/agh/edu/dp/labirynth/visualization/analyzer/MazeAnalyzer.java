@@ -66,7 +66,7 @@ public class MazeAnalyzer {
     private List<Vector2D> mapToLeftDown(List<Vector2D> list){
         Vector2D downLeft = new Vector2D(Integer.MAX_VALUE, Integer.MAX_VALUE);
 
-        list.forEach(vector2D -> downLeft.setXY(vector2D.getSmallest(downLeft)));
+        list.forEach(vector2D -> downLeft.setXY(vector2D.lowerLeft(downLeft)));
         list = list.stream().map(vector2D -> vector2D.diff(downLeft)).collect(Collectors.toList());
 
         return list;

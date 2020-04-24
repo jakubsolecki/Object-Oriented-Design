@@ -31,7 +31,7 @@ public class Vector2D {
                 Y == vector2D.Y;
     }
 
-    public Vector2D getSmallest(Vector2D other){
+    public Vector2D lowerLeft(Vector2D other){
         int x;
         int y;
 
@@ -39,6 +39,17 @@ public class Vector2D {
         y = Math.min(this.getY(), other.getY());
         return new Vector2D(x, y);
     }
+
+    public Vector2D upperRight(Vector2D other){
+        int x;
+        int y;
+
+        x = Math.max(this.getX(), other.getX());
+        y = Math.max(this.getY(), other.getY());
+        return new Vector2D(x, y);
+    }
+
+
 
     public void setX(int x) {
         X = x;
