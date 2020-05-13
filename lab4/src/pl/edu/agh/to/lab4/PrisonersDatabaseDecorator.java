@@ -1,13 +1,10 @@
 package pl.edu.agh.to.lab4;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class PrisonersDatabaseDecorator implements PersonAggregate {
-    private PrisonersDatabase prisonersDatabase;
+    private final PrisonersDatabase prisonersDatabase;
 
     public PrisonersDatabaseDecorator(PrisonersDatabase prisonersDatabase) {
         this.prisonersDatabase = prisonersDatabase;
@@ -24,5 +21,4 @@ public class PrisonersDatabaseDecorator implements PersonAggregate {
                 .collect(Collectors.toSet())
                 .iterator();
     }
-
 }
