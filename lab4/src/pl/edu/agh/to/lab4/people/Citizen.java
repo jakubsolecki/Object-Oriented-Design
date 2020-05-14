@@ -1,6 +1,8 @@
-package pl.edu.agh.to.lab4;
+package pl.edu.agh.to.lab4.people;
 
-public class Citizen extends Person{
+import pl.edu.agh.to.lab4.people.Person;
+
+public class Citizen extends Person {
     private int age;
 
     public Citizen(String firstname, String lastname, int age) {

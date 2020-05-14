@@ -1,6 +1,7 @@
 package pl.edu.agh.to.lab4;
 
 import org.junit.Test;
+import pl.edu.agh.to.lab4.people.Prisoner;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

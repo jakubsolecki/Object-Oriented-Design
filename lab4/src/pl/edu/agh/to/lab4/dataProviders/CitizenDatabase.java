@@ -1,4 +1,6 @@
-package pl.edu.agh.to.lab4;
+package pl.edu.agh.to.lab4.dataProviders;
+
+import pl.edu.agh.to.lab4.people.Citizen;
 
 import java.util.ArrayList;
 import java.util.Collection;

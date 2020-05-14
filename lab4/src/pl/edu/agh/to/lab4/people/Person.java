@@ -1,4 +1,4 @@
-package pl.edu.agh.to.lab4;
+package pl.edu.agh.to.lab4.people;
 
 public abstract class Person {
     private final String firstname;

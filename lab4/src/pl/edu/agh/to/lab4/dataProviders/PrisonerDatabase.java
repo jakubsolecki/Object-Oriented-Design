@@ -1,15 +1,17 @@
-package pl.edu.agh.to.lab4;
+package pl.edu.agh.to.lab4.dataProviders;
+
+import pl.edu.agh.to.lab4.people.Prisoner;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PrisonersDatabase {
+public class PrisonerDatabase {
 
     private final Map<String, Collection<Prisoner>> prisoners = new HashMap<String, Collection<Prisoner>>();
 
-    public PrisonersDatabase() {
+    public PrisonerDatabase() {
         addPrisoner("Wiezienie krakowskie", new Prisoner("Jan", "Kowalski", "87080452357", 2005, 7));
         addPrisoner("Wiezienie krakowskie", new Prisoner("Anita", "Wiercipieta", "84080452357", 2009, 3));
         addPrisoner("Wiezienie krakowskie", new Prisoner("Janusz", "Zlowieszczy", "92080445657", 2001, 10));

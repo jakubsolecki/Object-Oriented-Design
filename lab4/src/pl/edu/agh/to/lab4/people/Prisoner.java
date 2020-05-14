@@ -1,8 +1,10 @@
-package pl.edu.agh.to.lab4;
+package pl.edu.agh.to.lab4.people;
+
+import pl.edu.agh.to.lab4.people.Person;
 
 import java.util.Calendar;
 
-public class Prisoner extends Person{
+public class Prisoner extends Person {
 
 
     private final int judgementYear;
